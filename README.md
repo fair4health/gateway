@@ -52,6 +52,17 @@ Deploy the [Keycloak auth repo](https://github.com/AriHealth/keycloak-auth). Exe
 curl -X POST "http://localhost:8083/oauth/login" -H "accept: */*" -H "Content-Type: application/json" -d "{ \"password\": \"string\", \"username\": \"string\"}"
 ```
 
+It should redirect the post to `http://localhost:8081/login` and provide the following response:
+```
+{
+  "timestamp" : "2020-07-19T18:06:19.810+0000",
+  "status" : 401,
+  "error" : "Unauthorized",
+  "message" : "Unauthorised access to protected resource",
+  "path" : "/login"
+}
+```
+
 ## Environment variables
 
     LOGGING_FOLDER=

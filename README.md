@@ -38,7 +38,7 @@ mvn clean package
 and execute
 
 ```
-java -jar target/gateway.jar
+java -jar target/gateway.war
 ```
 
 It can also be run as:
@@ -65,6 +65,7 @@ It should redirect the post to `http://localhost:8081/login` and provide the fol
 
 ## Environment variables
 
+    OAUTH_EASY_URL=
     LOGGING_FOLDER=
     LOGGING_MODE=
 
@@ -73,19 +74,19 @@ It should redirect the post to `http://localhost:8081/login` and provide the fol
 Build the image:
 
 ```
-docker build -t health/calculator .
+docker build -t fair4health/gateway .
 ```
 
 Simple deployment:
 
 ```
-docker run --name calculator -d health/calculator
+docker run --name gateway -d fair4health/gateway
 ```
 
 Logging can be also configured using `LOGGING_FOLDER` and sharing a volume (this is useful for example for [ELK](https://www.elastic.co/elk-stack) processing). The level of the logging can be configured with `LOGGING_MODE` (dev|prod):
 
 ```
-docker run --name calculator -d -v /tmp/log/calculator:/log/calculator -e LOGGING_FOLDER=/log/test -e LOGGING_MODE=dev health/calculator
+docker run --name gateway -d -v /tmp/log/gateway:/log/calculator -e LOGGING_FOLDER=/log/test -e LOGGING_MODE=dev fair4health/gateway
 ```
 
 ## License

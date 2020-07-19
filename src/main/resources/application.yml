@@ -1,0 +1,23 @@
+spring:
+  profiles:
+    active: ${LOGGING_MODE:dev}
+  
+---
+
+server:
+  port: 8083
+
+spring:
+  profiles: dev
+  jackson:
+    serialization:
+      INDENT_OUTPUT: true
+  cloud:
+    gateway:
+      routes:
+      - id: oauth_easy
+        uri: ${OAUTH_EASY_URL:http://localhost:8081}
+        predicates:
+        - Path=/oauth/**
+        filters:
+        - StripPrefix=1      

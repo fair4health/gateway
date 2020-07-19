@@ -1,0 +1,7 @@
+/target/
+/.settings/
+/.okhttpcache/
+.classpath
+.project
+.springBeans
+*.log

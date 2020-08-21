@@ -16,15 +16,27 @@ spring:
     gateway:
       routes:
       - id: oauth_easy_swagger
-        uri: ${OAUTH_EASY_SWAGGER_URL:http://localhost:8081/swagger-ui.html}
+        uri: ${OAUTH_EASY_URL:http://localhost:8081}
         predicates:
         - Path=/oauth/swagger-ui.html
         filters:
-        - RedirectTo=302, http://localhost:8081/swagger-ui.html   
+        - StripPrefix=1   
       - id: oauth_easy
         uri: ${OAUTH_EASY_URL:http://localhost:8081}
         predicates:
         - Path=/oauth/**
+        filters:
+        - StripPrefix=1      
+      - id: discovery_swagger
+        uri: ${DISCOVERY_URL:http://localhost:8082}
+        predicates:
+        - Path=/discovery/swagger-ui.html
+        filters:
+        - StripPrefix=1   
+      - id: discovery
+        uri: ${DISCOVERY_URL:http://localhost:8082}
+        predicates:
+        - Path=/discovery/**
         filters:
         - StripPrefix=1      
       - id: ppddm-manager

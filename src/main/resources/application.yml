@@ -15,9 +15,21 @@ spring:
   cloud:
     gateway:
       routes:
+      - id: oauth_easy_swagger
+        uri: ${OAUTH_EASY_SWAGGER_URL:http://localhost:8081/swagger-ui.html}
+        predicates:
+        - Path=/oauth/swagger-ui.html
+        filters:
+        - RedirectTo=302, http://localhost:8081/swagger-ui.html   
       - id: oauth_easy
         uri: ${OAUTH_EASY_URL:http://localhost:8081}
         predicates:
         - Path=/oauth/**
         filters:
         - StripPrefix=1      
+      - id: ppddm-manager
+        uri: ${PPDDM_MANAGER_URL:http://localhost:8181}
+        predicates:
+        - Path=/ppddm-manager/**
+        filters:
+        - StripPrefix=1  

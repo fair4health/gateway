@@ -10,7 +10,7 @@
 
 	<groupId>eu.fair4health</groupId>
 	<artifactId>gateway</artifactId>
-	<version>0.0.1</version>
+	<version>0.0.2-SNAPSHOT</version>
 	<packaging>war</packaging>
 	
 	<name>gateway</name>
@@ -36,7 +36,7 @@
 		<url>https://github.com/fair4health/gateway.git</url>
 		<connection>scm:git:https://github.com/fair4health/gateway.git</connection>
 		<developerConnection>scm:git:https://github.com/fair4health/gateway.git</developerConnection>
-		<tag>0.0.1</tag>
+		<tag>HEAD</tag>
 	</scm>
 
 	<distributionManagement>

@@ -12,8 +12,26 @@ spring:
   jackson:
     serialization:
       INDENT_OUTPUT: true
+  security:
+    oauth2:
+      client:
+        provider:
+          keycloak:
+            issuer-uri: https://localhost/auth/realms/FAIR4Health
+        registration:
+          keycloak:
+            client-id: test
+            client-secret: test
+      resourceserver:
+        opaquetoken:
+          introspection-uri: https://localhost/auth/realms/FAIR4Health/protocol/openid-connect/token/introspect
+          client-id: test
+          client-secret: test
+                  
   cloud:
     gateway:
+      default-filters:
+      - TokenRelay
       routes:
       - id: oauth_easy_swagger
         uri: ${OAUTH_EASY_URL:http://localhost:8081}
@@ -44,4 +62,5 @@ spring:
         predicates:
         - Path=/ppddm-manager/**
         filters:
-        - StripPrefix=1  
+        - StripPrefix=1
+  
